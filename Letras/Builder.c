@@ -145,10 +145,12 @@ int isConsonante(eLetra* this)
 }
 
 
-/*int funcionQueFiltra(void* elemento)
+int funcionQueFiltra(void* elemento,char* palabra)
 {
-    if(get_edad((numeroNatural*)elemento)>30&&strcmp(get_profesion((numeroNatural*)elemento),"programador")==0)
+
+    /*if()
     {
+
         return 1;
-    }
-}*/
+    }*/
+}

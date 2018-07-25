@@ -10,14 +10,18 @@ void getString(char mensaje[],char input[]);
 int getStringLetras(char mensaje[],char input[]);
 int esSoloLetras(char str[]);
 int menu();
+ArrayList* nuevaCadena(ArrayList*this);
 
 int main()
 {
     ArrayList* letras;
+    ArrayList* repetido;
+
     letras=al_newArrayList();
+    repetido=al_newArrayList();
     int opcion;
     char respuesta='s';
-    eLetra* aux;
+
 
     while(respuesta=='s')
     {
@@ -36,13 +40,16 @@ int main()
         break;
 
     case 2:
-
+        nuevaCadena(repetido);
         break;
 
+    case 3:
+        parserRead(repetido);
+        printAll(repetido);
     default:
         break;
     }
-
+        system("cls");
     }//cierre while
 
     return 0;
@@ -66,8 +73,11 @@ int menu()
     int opcion;
     printf("\n1-Listar datos\n");
     printf("\n2-Ingresar nueva cadena\n");
-    printf("Ingrese una opcion: ");
+    printf("\n3-Mostrar cadena en array list\n");
+    printf("\nIngrese una opcion: ");
     scanf("%d",&opcion);
+
+    return opcion;
 }
 
 void getString(char mensaje[],char input[])
@@ -101,17 +111,70 @@ int esSoloLetras(char str[])
     return 1;
 }
 
-ArrayList* nuevaCadena()
+/*ArrayList* arrayRepetido(ArrayList*this)
 {
-    ArrayList* nuevasLetras;
-    ArrayList* nuevasNoLetras;
-    nuevasLetras=al_newArrayList();
-    nuevasNoLetras=al_newArrayList();
     eLetra* auxStruct;
-    char* auxCadena;
 
-    if(!getStringLetras("Ingrese una cadena de caracteres",auxCadena))
+    char* auxCadena;
+     if(!getStringLetras("\nIngrese una cadena de caracteres: ",auxCadena))
     {
         printf("La cadena contenia elementos que no eran letras");
     }
+
+
+    auxStruct=al_filter(this,funcionQueFiltra());
+
+    return auxStruct;
+
+} */
+
+
+
+
+
+
+
+ArrayList* nuevaCadena(ArrayList* this)
+{
+    eLetra* auxStruct;
+    ArrayList* auxAL;
+    auxAL=al_newArrayList();
+    char auxCadena[20];
+    int auxVocal;
+    int auxConsonante;
+
+    if(!getStringLetras("\nIngrese una cadena de caracteres: ",auxCadena))
+    {
+        printf("La cadena contenia elementos que no eran letras");
+    }
+
+    printf("\nCadena: %s\n",auxCadena);
+    system("pause");
+    for(int i=0;i<strlen(auxCadena);i++)
+    {
+        char letra;
+        letra = auxCadena[i];
+
+        auxStruct=constructor();
+
+        set_letra(auxStruct,letra);
+        set_name(auxStruct,"NULL");
+
+        auxVocal=isVocal(auxStruct);
+        auxConsonante=isConsonante(auxStruct);
+
+        set_vocal(auxStruct,auxVocal);
+        set_consonante(auxStruct,auxConsonante);
+
+        for(int i=0;i<al_len(this);i++)
+        {
+            if(this->(pElements+i)->letra==auxStruct->letra)
+            {
+                al_add(auxStruct);
+            }
+        }
+
+
+    }
 }
+

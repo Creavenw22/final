@@ -31,4 +31,4 @@ int get_consonante(eLetra* this);
 
 void printAll(ArrayList* this);
 void printOne(eLetra* this);
-int funcionQueFiltra(void* elemento);
+int funcionQueFiltra(void* elemento,char* palabra);
